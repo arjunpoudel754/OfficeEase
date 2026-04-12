@@ -5,13 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title >{% trans "OfficeEase" %}</title>
+    <title >{% block title %}{% trans "OfficeEase" %}{% endblock %}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'style.css' %}">
     {% block extra_css %}{% endblock %}
 </head>
-<body class="container bg-white text-black pt-1 mx-auto font-sans">
+<body class="bg-white text-black pt-1 font-sans">
 
   <nav class="max-w-7xl mx-auto flex items-center justify-between bg-blue-50 px-10 py-3 rounded-2xl">
     <div class="text-3xl font-semibold" >{% trans "OfficeEase" %}</div>
@@ -100,8 +100,10 @@
           </div>
         </div>
       {% else %}
+        {% block nav_buttons %}
         <a href="{% url 'auth' %}" class="text-sm border border-slate-500 py-3 px-8 inline-flex items-center justify-center" >{% trans "Sign In" %}</a>
         <a href="{% url 'auth' %}#signup" class="text-sm bg-blue-600 px-8 py-3 text-white inline-flex items-center justify-center" >{% trans "Sign Up" %}</a>
+        {% endblock %}
       {% endif %}
     </div>
   </nav>
