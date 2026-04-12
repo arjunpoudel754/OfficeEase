@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('password-conditions').classList.remove('hidden');
     });
     passwordInput.addEventListener('input', validatePassword);
+    
+    passwordInput.addEventListener('blur', () => {
+      document.getElementById('password-conditions').classList.add('hidden');
+    });
   }
   if (confirmPasswordInput) {
     confirmPasswordInput.addEventListener('blur', () => {

@@ -1,0 +1,54 @@
+# Deployment Plan for Render
+
+This plan outlines the steps to prepare the **OfficeEase** Django project for production deployment on Render.
+
+## User Review Required
+
+> [!IMPORTANT]
+> - **PostgreSQL Database**: Render provides a free PostgreSQL database. We will configure the project to use it instead of the local `db.sqlite3`.
+> - **Environment Variables**: Sensitive data (Secret Key, Database URL) will be moved to environment variables for security. You will need to add these to the Render dashboard.
+
+## Proposed Changes
+
+### 1. Dependency Management
+We need to add production-ready libraries to the project.
+
+#### [NEW] [requirements.txt](file:///d:/VScode/Sem_project/requirements.txt)
+Create a list of all required packages including:
+- `gunicorn`: The production web server.
+- `whitenoise`: To serve static files (CSS, JS) in production.
+- `dj-database-url`: To easily connect to Render's PostgreSQL database.
+- `psycopg2-binary`: The PostgreSQL adapter for Python.
+- `python-dotenv`: To handle environment variables during local development.
+
+### 2. Django Settings Configuration
+#### [MODIFY] [settings.py](file:///d:/VScode/Sem_project/my_project/settings.py)
+- **Security**: Move `SECRET_KEY` and `DEBUG` to environment variables.
+- **Allowed Hosts**: Update to accept the Render URL.
+- **Middleware**: Add `WhiteNoiseMiddleware` for static file management.
+- **Database**: Configure to use `dj-database-url` for production and fallback to SQLite for local development.
+- **Static Files**: Set `STATIC_ROOT` for `collectstatic`.
+
+### 3. Render Configuration Files
+#### [NEW] [build.sh](file:///d:/VScode/Sem_project/build.sh)
+A script that Render will run during deployment to:
+1. Install dependencies.
+2. Collect static files.
+3. Apply database migrations.
+
+#### [NEW] [Procfile](file:///d:/VScode/Sem_project/Procfile)
+Tells Render how to start the application using `gunicorn`.
+
+---
+
+## Open Questions
+- Is there any other special requirement for the deployment (e.g., specific Python version)? (I will assume Python 3.12+ if not specified).
+
+## Verification Plan
+
+### Automated Tests
+- Run `python manage.py check --deploy` to verify security settings.
+- Run `python manage.py collectstatic --noinput` to ensure static file configuration is correct.
+
+### Manual Verification
+- After deployment, verify the live URL to ensure CSS/JS are loading and the database is functional.

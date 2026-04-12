@@ -15,10 +15,22 @@
         <div class="animate-together">
           <p class="mt-6 text-lg max-w-xl text-slate-600" >{% trans "Clear lessons, simple language, and structured steps — with local language support — to help you master MS Office with confidence." %}</p>
           <div class="mt-8">
-            <button class="px-8 py-4 rounded-lg font-bold text-white bg-slate-900 
+            {% if user.is_authenticated %}
+            <a href="{% url 'auth' %}">
+              <button class="hidden px-8 py-4 rounded-lg font-bold text-white bg-slate-900 
                transition-all duration-300 ease-in-out
                hover:bg-blue-600 hover:shadow-xl" >{% trans "Start Learning Now" %}
             </button>
+            </a>
+            {% else %}
+              <a href="{% url 'auth' %}">
+              <button class="px-8 py-4 rounded-lg font-bold text-white bg-slate-900 
+               transition-all duration-300 ease-in-out
+               hover:bg-blue-600 hover:shadow-xl" >{% trans "Start Learning Now" %}
+            </button>
+            </a>
+            {% endif %}
+            
           </div>
         </div>
       </div>
@@ -138,18 +150,19 @@
               class="px-5 py-2.5 bg-white/10 border border-white/10 rounded-xl text-white text-sm font-bold backdrop-blur-sm" >{% trans "Pro Resume Design" %}</span>
           </div>
           {% if user.is_authenticated %}
-          <a href="#">
+          <a href="{% url 'word_course' %}">
             <button  class="px-12 py-5 rounded-2xl font-black text-xl text-[#2b579a] bg-white 
             border-2 border-transparent transition-all duration-300 ease-in-out
             hover:bg-blue-600 hover:text-white hover:shadow-[0_15px_30px_rgba(37,99,235,0.3)]" >{% trans "Start Project Now" %}
-          </a>
           </button>
+          </a>
           {% else %}
           <a href="{% url 'auth' %}">
             <button class="px-12 py-5 rounded-2xl font-black text-xl text-[#2b579a] bg-white 
             border-2 border-transparent transition-all duration-300 ease-in-out
-            hover:bg-blue-600 hover:text-white hover:shadow-[0_15px_30px_rgba(37,99,235,0.3)]" >{% trans "Start Project Now" %}</a>
+            hover:bg-blue-600 hover:text-white hover:shadow-[0_15px_30px_rgba(37,99,235,0.3)]" >{% trans "Start Project Now" %}
           </button> 
+          </a>
           {% endif %}
         </div>
 
@@ -238,37 +251,23 @@
             <span
               class="px-5 py-2.5 bg-emerald-50 border border-emerald-100 rounded-xl text-emerald-700 text-sm font-bold" >{% trans "Dynamic Charts" %}</span>
           </div>
-          <button class="px-12 py-5 rounded-2xl font-black text-xl text-white bg-slate-900 
+          {% if user.is_authenticated %}
+          <a href="{% url 'excel_course' %}">
+            <button class="px-12 py-5 rounded-2xl font-black text-xl text-white bg-slate-900 
                transition-all duration-300 ease-in-out
                hover:bg-emerald-600 hover:shadow-[0_20px_40px_rgba(16,185,129,0.3)]" >{% trans "Unlock Data Mastery" %}
-          </button>
+            </button>
+          </a>
+          {% else %}
+          <a href="{% url 'auth' %}">
+            <button class="px-12 py-5 rounded-2xl font-black text-xl text-white bg-slate-900 
+               transition-all duration-300 ease-in-out
+               hover:bg-emerald-600 hover:shadow-[0_20px_40px_rgba(16,185,129,0.3)]" >{% trans "Unlock Data Mastery" %}   
+            </button>
+          </a>
+          {% endif %}
+          
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- feature bar -->
-  <section class="max-w-7xl mx-auto px-10 pb-20">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100">
-        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center font-bold mb-6">IDE
-        </div>
-        <h4 class="font-black text-slate-900 text-lg" >{% trans "In-Browser Practice" %}</h4>
-        <p class="text-slate-500 text-sm mt-2 leading-relaxed" >{% trans "No need to install anything. Practice MS Office directly in our interactive environment." %}</p>
-      </div>
-      <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100">
-        <div
-          class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center font-bold mb-6">
-          LAB</div>
-        <h4 class="font-black text-slate-900 text-lg" >{% trans "Workout Exercises" %}</h4>
-        <p class="text-slate-500 text-sm mt-2 leading-relaxed" >{% trans "Complete real-world tasks like building automated payrolls or professional pitch decks." %}</p>
-      </div>
-      <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100">
-        <div
-          class="w-12 h-12 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center font-bold mb-6">
-          Q&A</div>
-        <h4 class="font-black text-slate-900 text-lg" >{% trans "Instant Feedback" %}</h4>
-        <p class="text-slate-500 text-sm mt-2 leading-relaxed" >{% trans "Our system checks your work instantly and guides you through every step of the quiz." %}</p>
       </div>
     </div>
   </section>
@@ -329,9 +328,20 @@
               class="px-5 py-2.5 bg-orange-50 border border-orange-100 rounded-xl text-orange-700 text-sm font-bold" >{% trans "Visual Storytelling" %}</span>
           </div>
 
-          <button  class="px-12 py-5 rounded-2xl font-black text-xl text-white bg-slate-900 
-                       transition-all duration-300 ease-in-out
-                       hover:bg-orange-600 hover:shadow-[0_20px_40px_rgba(234,88,12,0.3)] mb-10" >{% trans "Become a Pro Speaker" %}</button>
+          {% if user.is_authenticated %}
+            <a href="{% url 'powerpoint_course' %}">
+              <button  class="px-12 py-5 rounded-2xl font-black text-xl text-white bg-slate-900 transition-all duration-300 ease-in-out hover:bg-orange-600 hover:shadow-[0_20px_40px_rgba(234,88,12,0.3)] mb-10" >
+                {% trans "Become a Pro Presenter" %}
+              </button>
+            </a>
+          {% else %}
+            <a href="{% url 'auth' %}">
+              <button  class="px-12 py-5 rounded-2xl font-black text-xl text-white bg-slate-900 transition-all duration-300 ease-in-out hover:bg-orange-600 hover:shadow-[0_20px_40px_rgba(234,88,12,0.3)] mb-10" >
+                {% trans "Become a Pro Presenter" %}
+              </button>
+            </a>
+          {% endif %}
+          
         </div>
 
         <div class="lg:w-1/2 relative group">
@@ -356,6 +366,32 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- feature bar -->
+  <section class="max-w-7xl mx-auto px-10 pb-20">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100">
+        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center font-bold mb-6">IDE
+        </div>
+        <h4 class="font-black text-slate-900 text-lg" >{% trans "In-Browser Practice" %}</h4>
+        <p class="text-slate-500 text-sm mt-2 leading-relaxed" >{% trans "No need to install anything. Practice MS Office directly in our interactive environment." %}</p>
+      </div>
+      <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100">
+        <div
+          class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center font-bold mb-6">
+          LAB</div>
+        <h4 class="font-black text-slate-900 text-lg" >{% trans "Workout Exercises" %}</h4>
+        <p class="text-slate-500 text-sm mt-2 leading-relaxed" >{% trans "Complete real-world tasks like building automated payrolls or professional pitch decks." %}</p>
+      </div>
+      <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100">
+        <div
+          class="w-12 h-12 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center font-bold mb-6">
+          Q&A</div>
+        <h4 class="font-black text-slate-900 text-lg" >{% trans "Instant Feedback" %}</h4>
+        <p class="text-slate-500 text-sm mt-2 leading-relaxed" >{% trans "Our system checks your work instantly and guides you through every step of the quiz." %}</p>
       </div>
     </div>
   </section>

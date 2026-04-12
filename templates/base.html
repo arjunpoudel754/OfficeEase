@@ -26,32 +26,48 @@
 
         <ul class="absolute left-0 mt-2 w-48 bg-white border border-slate-100 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100] p-2">
             <li>
+                {% if user.is_authenticated %}
                 <a href="{% url 'word_course' %}" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all">
                     <i class="fa-solid fa-file-word text-blue-500"></i>
                     <span class="font-medium" >{% trans "Microsoft Word" %}</span>
                 </a>
+                {% else %}
+                <a href="{% url 'auth' %}?next={{ request.path }}" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all">
+                    <i class="fa-solid fa-file-word text-blue-500"></i>
+                    <span class="font-medium" >{% trans "Microsoft Word" %}</span>      
+                </a>
+                {% endif %}
             </li>
             <li>
+                {% if user.is_authenticated %}
                 <a href="{% url 'excel_course' %}" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-lg transition-all">
                     <i class="fa-solid fa-file-excel text-emerald-500"></i>
                     <span class="font-medium" >{% trans "Microsoft Excel" %}</span>
                 </a>
+                {% else %}
+                <a href="{% url 'auth' %}?next={{ request.path }}" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-lg transition-all">
+                    <i class="fa-solid fa-file-excel text-emerald-500"></i>
+                    <span class="font-medium" >{% trans "Microsoft Excel" %}</span>
+                </a>
+                {% endif %}
             </li>
             <li>
+                {% if user.is_authenticated %}
                 <a href="{% url 'powerpoint_course' %}" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-orange-50 hover:text-orange-600 rounded-lg transition-all">
                     <i class="fa-solid fa-file-powerpoint text-orange-500"></i>
                     <span class="font-medium" >{% trans "Microsoft PowerPoint" %}</span>
                 </a>
+                {% else %}
+                <a href="{% url 'auth' %}?next={{ request.path }}" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-orange-50 hover:text-orange-600 rounded-lg transition-all">
+                    <i class="fa-solid fa-file-powerpoint text-orange-500"></i>
+                    <span class="font-medium" >{% trans "Microsoft PowerPoint" %}</span>
+                </a>
+                {% endif %}
             </li>
         </ul>
       </li>
 
-      {% if user.is_authenticated %}
       <li class="hover:text-black cursor-pointer"><a href="{% url 'how_it_works' %}" >{% trans "How It Works" %}</a></li>
-      {% else %}
-      <li class="hover:text-black cursor-pointer"><a href="{% url 'auth' %}?next={{ request.path }}" >{% trans "Courses" %}</a></li>
-      <li class="hover:text-black cursor-pointer"><a href="{% url 'auth' %}?next={{ request.path }}" >{% trans "How It Works" %}</a></li>
-      {% endif %}
       <li class="hover:text-black cursor-pointer"><a href="{% url 'about_us' %}" >{% trans "About Us" %}</a></li>
     </ul>
 
