@@ -93,9 +93,9 @@ msgid "Hello,<br/>Welcome!"
 msgstr "Bonjour,<br/>Bienvenue !"
 
 #: .\accounts\templates\accounts\auth.html:284
-msgid "Don\\'t have an account?<br/>Join us and get started today."
-msgstr ""
-"Vous n'avez pas de compte ?<br/>Rejoignez-nous et commencez dès aujourd'hui."
+msgid "Don't have an account?<br/>Join us and get started today."
+msgstr "Vous n'avez pas de compte ?<br/>Rejoignez-nous et commencez dès aujourd'hui."
+
 
 #: .\accounts\templates\accounts\auth.html:289 .\templates\base.html:88
 msgid "Sign Up"
