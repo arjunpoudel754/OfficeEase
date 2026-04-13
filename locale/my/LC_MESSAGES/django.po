@@ -1,7 +1,7 @@
-# SOME DESCRIPTIVE TITLE.
+# Myanmar Transaltion of the OfficeEase Platform
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# FIRST AUTHOR arjunpoudel754@gmail.com, 2026.
 #
 #, fuzzy
 msgid ""
@@ -553,15 +553,15 @@ msgstr "ဒီမိုသင်တန်းကို စမ်းကြည့�
 
 #: .\core\templates\core\home.html:10
 msgid "Learn"
-msgstr "လေ့လာရန်"
+msgstr "လွယ်ကူစွာ"
 
 #: .\core\templates\core\home.html:11
 msgid "Microsoft Office"
-msgstr "Microsoft Office ကို"
+msgstr "Microsoft Office"
 
 #: .\core\templates\core\home.html:12
 msgid "the Easy Way"
-msgstr "လွယ်ကူသောနည်းလမ်းဖြင့်"
+msgstr "လေ့လာပါ"
 
 #: .\core\templates\core\home.html:16
 msgid ""
