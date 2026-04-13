@@ -850,7 +850,7 @@ msgstr "OfficeEase"
 
 #: .\templates\base.html:19
 msgid "Home"
-msgstr "အိမ်"
+msgstr "ပင်မမျက်နှာ"
 
 #: .\templates\base.html:23 .\templates\base.html:52
 msgid "Courses"
